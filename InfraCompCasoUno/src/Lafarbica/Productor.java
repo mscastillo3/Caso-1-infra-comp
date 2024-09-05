@@ -16,19 +16,18 @@ public class Productor extends Thread {
             Producto producto = new Producto(tipo);
             System.out.println("Producto producido: " + producto.getTipo());
             //hacemos sleep?
-            while (!depositoP.poner( producto)){
+            if (depositoP.lleno()){
                 try {
                     depositoP.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
+            depositoP.poner(producto);
             System.out.println("Producto almacenado: " + producto.getTipo());
 
         }
-        Producto Productofin = new Producto("FIN_" + tipo);
-        
-        while (depositoP.poner(Productofin)){
+        if (depositoP.lleno()){
             try {
                 depositoP.wait();
             } catch (InterruptedException e) {
@@ -36,7 +35,8 @@ public class Productor extends Thread {
             }
         }
         //producto fin
-        
+        Producto Productofin = new Producto("FIN_" + tipo);
+        depositoP.poner(Productofin);
         System.out.println("Un de los productores " + tipo + " finaliso");
     }
 }

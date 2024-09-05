@@ -11,23 +11,20 @@ public DepositoP(int capDeProd) {
     this.productos = new LinkedList<Producto>();
 }
 
-public synchronized boolean poner(Producto p) {
-    if (productos.size() +1< capDeProd ){
-        return false;
-    }
-    else {
+public synchronized boolean lleno() {
+    return productos.size()+1< capDeProd;
+}
+
+public synchronized void poner(Producto p) {
     productos.add(p);
-    return true;
-    }
 }
 
 public synchronized Producto sacar(){
-    if (productos.isEmpty()  ){
-        return null ;
-    }
-    else {
     return productos.poll();
-    }
+}
+
+public synchronized boolean vacio() {
+    return productos.isEmpty();
 }
 
 }

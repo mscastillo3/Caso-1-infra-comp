@@ -10,17 +10,18 @@ public class Distribuidor extends Thread {
     public void run() {
             boolean a=true;
             while (a) {
-                Producto producto = null;
-                while( producto== null){
-                    producto = depositoD.sacar(tipo);
-                    if (producto ==null){
+
+                while( depositoD.vacio()|| !depositoD.tipo().contains(tipo)){
                     try {
                         depositoD.wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                }
+
+                Producto producto = depositoD.sacar();
+                System.out.println("Producto sacado: " + producto.getTipo() + " por distribuidor de tipo: " + tipo);
+
                 if (producto.getTipo().equals("FIN_" + tipo)) {
                     System.out.println("Se acabo una de las distribucion para el tipo: " + tipo);
                     a = false;
@@ -30,5 +31,4 @@ public class Distribuidor extends Thread {
             }
             }
         }
-        
 }

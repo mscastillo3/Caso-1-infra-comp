@@ -10,7 +10,7 @@ public class OperarioInternoDristribuidor extends Thread{
     public void run(){
         boolean seguir = true;
         while(seguir){
-        while(cinta.vacia()&& deposito.){
+        while(cinta.vacia()&& deposito.lleno()){
 
             System.out.println("Esperando a que haya algo en la cinta o que el deposito de distribuidores este vacio");
             try {
