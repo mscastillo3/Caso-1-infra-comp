@@ -6,7 +6,7 @@ public class Cinta {
 
     public synchronized Producto sacar() {
        
-        
+        producto = null;
         return producto;
     }
 
@@ -16,5 +16,8 @@ public class Cinta {
         
     }
 
+    public synchronized boolean vacia() {
+        return producto == null;
+    }
 
 }
