@@ -10,4 +10,11 @@ public class Cinta {
         return producto;
     }
 
+    public synchronized void meter(Producto producto) {
+
+        this.producto = producto;
+        
+    }
+
+
 }
