@@ -11,6 +11,7 @@ public class Productor extends Thread {
     public void producir() throws InterruptedException {
         //produce un producto del tipo especificado 
         Producto producto = new Producto(tipo);
+        almacenar(producto);//error
         System.out.println("Producto producido: " + producto.getTipo());}
     public void almacenar(Producto producto) {
         depositoP.poner(producto);
@@ -19,6 +20,7 @@ public class Productor extends Thread {
         public void run()  { //es sync?
             try { for (int i = 0; i < cantidadP; i++) {
                 producir(); 
+                
                 //hacemos sleep?
             }
             //producto fin
