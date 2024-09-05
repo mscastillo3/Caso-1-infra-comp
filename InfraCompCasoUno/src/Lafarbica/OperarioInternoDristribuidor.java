@@ -20,9 +20,9 @@ public class OperarioInternoDristribuidor extends Thread{
         Producto producto = cinta.sacar();
         seguir = producto.acabo();
         deposito.poner(producto);
-    }
+        deposito.notifyAll();
 
-    }
+    }}
 
 
 
