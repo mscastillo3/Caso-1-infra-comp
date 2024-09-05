@@ -8,6 +8,8 @@ public class OperarioInternoDristribuidor extends Thread{
     }
     
     public void run(){
+        boolean seguir = true;
+        while(seguir){
         while(cinta.vacia()&& deposito.lleno()){
             try {
                 sleep(1000);
@@ -16,7 +18,10 @@ public class OperarioInternoDristribuidor extends Thread{
             }
         }
         Producto producto = cinta.sacar();
+        seguir = producto.acabo();
         deposito.poner(producto);
+    }
+
     }
 
 
