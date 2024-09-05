@@ -2,11 +2,11 @@ public class Cinta {
     private Producto producto;
 
     public Cinta() {
+        producto = null;
     }
 
     public synchronized Producto sacar() {
-       
-        producto = null;
+    
         return producto;
     }
 

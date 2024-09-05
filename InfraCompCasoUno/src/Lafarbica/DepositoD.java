@@ -11,20 +11,24 @@ public DepositoD(int capDeDis) {
     this.productos = new LinkedList<Producto>();
 }
 
-public synchronized boolean lleno() {
-    return productos.size() < capDeDis; 
-}
-
-public synchronized void poner(Producto p) {
+public synchronized boolean poner(Producto p) {
+    if (productos.size() +1< capDeDis ){
+        return false;
+    }
+    else {
     productos.add(p);
+    return true;
+    }
 }
 
-public synchronized Producto sacar(){
+
+public synchronized Producto sacar(String tipo){
+    if (productos.isEmpty() && !productos.peek().getTipo().equals(tipo) ){
+        return null ;
+    }
+    else {
     return productos.poll();
-}
-
-public synchronized boolean vacio() {
-    return productos.isEmpty();
+    }
 }
 
 }

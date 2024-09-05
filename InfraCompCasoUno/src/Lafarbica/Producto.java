@@ -8,6 +8,6 @@ public class Producto {
 
 
     public boolean acabo(){
-        return false;
+        return tipo.equals("FIN_A") || tipo.equals("FIN_B");
     }
 }
