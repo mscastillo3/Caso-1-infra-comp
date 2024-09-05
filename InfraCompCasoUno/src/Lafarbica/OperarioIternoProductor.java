@@ -20,6 +20,7 @@ public class OperarioIternoProductor extends Thread{
         Producto producto = deposito.sacar();
         seguir = producto.acabo();
         cinta.meter(producto);
+        deposito.notifyAll();
     }}
     
 }
