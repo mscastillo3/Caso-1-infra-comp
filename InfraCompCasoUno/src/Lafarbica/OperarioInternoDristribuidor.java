@@ -21,7 +21,6 @@ public class OperarioInternoDristribuidor extends Thread{
                 e.printStackTrace();
             }
         }
-        System.out.println("revicion " + cinta.vacia()+ " " + deposito.lleno());
 
         Producto producto = cinta.sacar();
         System.out.println("Producto sacado de la cinta: " + producto.getTipo());

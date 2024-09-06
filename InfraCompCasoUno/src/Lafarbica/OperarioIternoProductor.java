@@ -20,7 +20,6 @@ public class OperarioIternoProductor extends Thread{
             }
         }
 
-        System.out.println("revicion " + !cinta.vacia()+ " " + deposito.vacio());
         Producto producto = deposito.sacar();
         System.out.println("Producto sacado del deposito de productos: " + producto.getTipo());
         cinta.meter(producto);
