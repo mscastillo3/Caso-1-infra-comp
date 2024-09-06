@@ -12,7 +12,7 @@ public DepositoP(int capDeProd) {
 }
 
 public synchronized boolean lleno() {
-    return productos.size()+1< capDeProd;
+    return productos.size()+1> capDeProd;
 }
 
 public synchronized void poner(Producto p) {

@@ -8,9 +8,10 @@ public class OperarioIternoProductor extends Thread{
     }
 
     public void run(){
-        boolean seguir = true;
-        while(seguir){
-        while((!cinta.vacia())&& deposito.vacio()){
+        int cantidad = 0;
+        while(cantidad< 4){
+
+        while(!cinta.vacia()|| deposito.vacio()){
             System.out.println("Esperando a que la cinta este vacia o que el deposito de productos tenga productos");
             try {
                 sleep(1000);
@@ -22,10 +23,13 @@ public class OperarioIternoProductor extends Thread{
         System.out.println("revicion " + !cinta.vacia()+ " " + deposito.vacio());
         Producto producto = deposito.sacar();
         System.out.println("Producto sacado del deposito de productos: " + producto.getTipo());
-        seguir = producto.acabo();
         cinta.meter(producto);
         System.out.println("Producto almacenado en la cinta: " + producto.getTipo());
-        deposito.notify();
-    }}
+        synchronized (deposito) {
+        deposito.notify();}
+        if (producto.acabo()){
+            cantidad ++;
+        }
+    }} 
     
 }

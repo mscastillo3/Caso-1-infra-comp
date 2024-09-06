@@ -10,10 +10,10 @@ public class Distribuidor extends Thread {
     public void run() {
             boolean a=true;
             while (a) {
-
+                synchronized (depositoD) {
                 while( depositoD.vacio()|| !depositoD.tipo().contains(tipo)){
                     try {
-                        depositoD.wait();
+                         depositoD.wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -29,6 +29,7 @@ public class Distribuidor extends Thread {
                 else {
                 System.out.println("Distribuido: " + producto.getTipo());
             }
+        }
             }
         }
 }

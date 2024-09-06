@@ -4,6 +4,7 @@ public class Producto {
         this.tipo = tipo;}
 
     public String getTipo() {
+
         return tipo;}
 
 
